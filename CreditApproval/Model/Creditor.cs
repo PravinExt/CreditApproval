@@ -9,12 +9,10 @@ namespace CreditApproval.Model
 {
     public class Creditor
     {
-        public int LoanApplication_ID { get; set; }
-        public int Applicant_ID { get; set; }
+        public int CreditorAssigned_ID { get; set; }
         public string Applicant_fname { get; set; }
         public string Applicant_mname { get; set; }
         public string Applicant_lname { get; set; }
-        public int Business_ID { get; set; }
         public string Business_Name { get; set; }
         public decimal LoanApplication_Amount { get; set; }
         public DateTime LoanApplication_Date { get; set; }
@@ -38,14 +36,11 @@ namespace CreditApproval.Model
                 while (loanReader.Read())
                 {
                     Creditor loaniobj = new Creditor();
-
-                    loaniobj.LoanApplication_ID = int.Parse(loanReader["LoanApplication_ID"].ToString());
-                    loaniobj.Applicant_ID = int.Parse(loanReader["Applicant_ID"].ToString());
+                    loaniobj.CreditorAssigned_ID = int.Parse(loanReader["CreditorAssigned_ID"].ToString());
                     loaniobj.Applicant_fname = loanReader["Applicant_FName"].ToString();
                     loaniobj.Applicant_mname = loanReader["Applicant_MName"].ToString();
                     loaniobj.Applicant_lname = loanReader["Applicant_LName"].ToString();
-                    loaniobj.Business_ID = int.Parse(loanReader["Business_ID"].ToString());
-                    loaniobj.Business_Name = loanReader["BusinessName"].ToString();
+                    loaniobj.Business_Name = loanReader["Business_Name"].ToString();
                     loaniobj.LoanApplication_Amount = Convert.ToDecimal(loanReader["LoanAmount"].ToString());
                     loaniobj.LoanApplication_Description = loanReader["LoanDescription"].ToString();
                     loaniobj.LoanApplication_Status = int.Parse(loanReader["LoanStatus"].ToString());
@@ -77,7 +72,7 @@ namespace CreditApproval.Model
                 dbHelper.Connect(dbHelper.GetConnStr());
 
                 MySqlParameter[] loan_para = new MySqlParameter[3];
-                loan_para[0] = new MySqlParameter("LoanApplication_ID", id);
+                loan_para[0] = new MySqlParameter("CreditorAssigned_ID", id);
                 loan_para[1] = new MySqlParameter("LoanApplication_Status", CreditorPara.LoanApplication_Status);
                 loan_para[2] = new MySqlParameter("LoanApplication_BankerComment", CreditorPara.LoanApplication_BankerComment);
 

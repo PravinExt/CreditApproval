@@ -217,3 +217,5 @@ C:\Work\BankPOC\CreditApproval\CreditApproval\obj\Release\netcoreapp2.1\CreditAp
 C:\Work\BankPOC\CreditApproval\CreditApproval\obj\Release\netcoreapp2.1\CreditApproval.csproj.CopyComplete
 C:\Work\BankPOC\CreditApproval\CreditApproval\obj\Release\netcoreapp2.1\CreditApproval.dll
 C:\Work\BankPOC\CreditApproval\CreditApproval\obj\Release\netcoreapp2.1\CreditApproval.pdb
+C:\Work\BankPOC\CreditApproval\CreditApproval\bin\Release\netcoreapp2.1\Amazon.Lambda.SQSEvents.dll
+C:\Work\BankPOC\CreditApproval\CreditApproval\bin\Release\netcoreapp2.1\AWSSDK.SQS.dll

@@ -218,3 +218,4 @@ C:\Work\BankPOC\CreditApproval\CreditApproval\bin\Debug\netcoreapp2.1\System.Sec
 C:\Work\BankPOC\CreditApproval\CreditApproval\bin\Debug\netcoreapp2.1\System.Security.Cryptography.ProtectedData.dll
 C:\Work\BankPOC\CreditApproval\CreditApproval\bin\Debug\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Work\BankPOC\CreditApproval\CreditApproval\bin\Debug\netcoreapp2.1\Amazon.Lambda.SQSEvents.dll
+C:\Work\BankPOC\CreditApproval\CreditApproval\bin\Debug\netcoreapp2.1\AWSSDK.SQS.dll

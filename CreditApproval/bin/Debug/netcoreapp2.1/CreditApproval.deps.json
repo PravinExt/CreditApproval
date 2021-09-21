@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "5297beb7068a206c107609efdba2c1bf349fdbd3"
+    "signature": "33b7953e6ac7013c353460c30b4099e7fde61a1b"
   },
   "compilationOptions": {
     "defines": [
@@ -26,6 +26,7 @@
         "dependencies": {
           "AWSSDK.Extensions.NETCore.Setup": "3.3.101",
           "AWSSDK.S3": "3.5.7.5",
+          "AWSSDK.SQS": "3.5.1.28",
           "Amazon.Lambda.AspNetCoreServer": "5.3.0",
           "Amazon.Lambda.SQSEvents": "2.0.0",
           "Microsoft.AspNetCore.App": "2.1.1",
@@ -140,14 +141,14 @@
           "lib/netstandard2.0/Amazon.Lambda.SQSEvents.dll": {}
         }
       },
-      "AWSSDK.Core/3.5.1.58": {
+      "AWSSDK.Core/3.5.3.9": {
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/AWSSDK.Core.dll": {
             "assemblyVersion": "3.3.0.0",
-            "fileVersion": "3.5.1.58"
+            "fileVersion": "3.5.3.9"
           }
         },
         "compile": {
@@ -156,7 +157,7 @@
       },
       "AWSSDK.Extensions.NETCore.Setup/3.3.101": {
         "dependencies": {
-          "AWSSDK.Core": "3.5.1.58",
+          "AWSSDK.Core": "3.5.3.9",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.1.1"
@@ -173,7 +174,7 @@
       },
       "AWSSDK.S3/3.5.7.5": {
         "dependencies": {
-          "AWSSDK.Core": "3.5.1.58"
+          "AWSSDK.Core": "3.5.3.9"
         },
         "runtime": {
           "lib/netstandard2.0/AWSSDK.S3.dll": {
@@ -183,6 +184,20 @@
         },
         "compile": {
           "lib/netstandard2.0/AWSSDK.S3.dll": {}
+        }
+      },
+      "AWSSDK.SQS/3.5.1.28": {
+        "dependencies": {
+          "AWSSDK.Core": "3.5.3.9"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AWSSDK.SQS.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.5.1.28"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/AWSSDK.SQS.dll": {}
         }
       },
       "BouncyCastle.NetCore/1.8.5": {
@@ -3845,12 +3860,12 @@
       "path": "amazon.lambda.sqsevents/2.0.0",
       "hashPath": "amazon.lambda.sqsevents.2.0.0.nupkg.sha512"
     },
-    "AWSSDK.Core/3.5.1.58": {
+    "AWSSDK.Core/3.5.3.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hXYOU6ov1iEgYhlvDbXHruSYL7TApdDNjugRLmFUY0Y11Ojnv8MHysoQ9kQI1xqF/VBdrqCnMektXX/FVUTl5A==",
-      "path": "awssdk.core/3.5.1.58",
-      "hashPath": "awssdk.core.3.5.1.58.nupkg.sha512"
+      "sha512": "sha512-mQpClYN6Rxb+RADnYOcKzNIN7Q/BULEGiDWtNc8KS3MBLtoYWnZVnHoALSW4UcL6cjTn3ACGH3dqXSkQmflukA==",
+      "path": "awssdk.core/3.5.3.9",
+      "hashPath": "awssdk.core.3.5.3.9.nupkg.sha512"
     },
     "AWSSDK.Extensions.NETCore.Setup/3.3.101": {
       "type": "package",
@@ -3865,6 +3880,13 @@
       "sha512": "sha512-FxgEjKWANdNQchAkjLrXZwi0E9rgUbR1pLHXy0GY6y/leaflyDOR+JcOf6njyMwhUk7Mu0iiBWTT08m/0s7w4w==",
       "path": "awssdk.s3/3.5.7.5",
       "hashPath": "awssdk.s3.3.5.7.5.nupkg.sha512"
+    },
+    "AWSSDK.SQS/3.5.1.28": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FbrFpvcVcHO7KjBLI+nHyuISiA5LRdr/kgKSRvVfArf2ifZeHLo7XSQmElgblEfuc9b2xvny+ZXatO74eBh7vQ==",
+      "path": "awssdk.sqs/3.5.1.28",
+      "hashPath": "awssdk.sqs.3.5.1.28.nupkg.sha512"
     },
     "BouncyCastle.NetCore/1.8.5": {
       "type": "package",
