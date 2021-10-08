@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Web;
 
-namespace ApplicationSubmission.Model
+namespace CreditApproval.Model
 {
     public class DBHelper
     {
@@ -15,6 +15,7 @@ namespace ApplicationSubmission.Model
         MySqlDataReader _reader = null;
 
         string _sLogFilePath = string.Empty;
+        public static string conStr;
 
         /// <summary>
         /// Constructor of the class 
@@ -32,7 +33,7 @@ namespace ApplicationSubmission.Model
 
         public string GetConnStr()
         {
-            string sConnectionString = "server = applicationsubmission.cikv7fwlsku8.ap-south-1.rds.amazonaws.com; port=3306; uid=admin; pwd=admin8910; database=CreditApproval";
+            string sConnectionString = conStr;
             return sConnectionString;
         }
 
@@ -62,7 +63,7 @@ namespace ApplicationSubmission.Model
             }
         }
 
-        public MySqlTransaction ConnectTran(string ConnectionString,MySqlTransaction sqlTran)
+        public MySqlTransaction ConnectTran(string ConnectionString, MySqlTransaction sqlTran)
         {
             _connection = new MySqlConnection(ConnectionString);
             try
@@ -143,7 +144,7 @@ namespace ApplicationSubmission.Model
                         selectcommand.Parameters.AddWithValue(CommandParamtres[i].ParameterName, CommandParamtres[i].Value);
                     }
                 }
-                
+
                 //adding commnad to adapter
                 _adapter = new MySqlDataAdapter();
                 _adapter.SelectCommand = selectcommand;
@@ -210,7 +211,7 @@ namespace ApplicationSubmission.Model
             }
         }
 
-        public MySqlTransaction ExecuteTran(string Query, QueryType queryType, MySqlParameter[]CommandParamtres,MySqlTransaction sqlTran)
+        public MySqlTransaction ExecuteTran(string Query, QueryType queryType, MySqlParameter[] CommandParamtres, MySqlTransaction sqlTran)
         {
             //No of records affected by execute command -1,0, >0
             //-1 : Insert/update/delete statement not executed
