@@ -35,11 +35,14 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
     
-- task: LambdaDeployFunction@1
+- task: LambdaNETCoreDeploy@1
   inputs:
     awsCredentials: 'awsconnection'
     regionName: 'ap-south-1'
-    deploymentMode: 'codeonly'
-    functionName: 'CreditApproval'
-    codeLocation: 'localfile'
-    localZipFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    command: 'deployServerless'
+    packageOnly: false
+    lambdaProjectPath: './CreditApproval'
+    stackName: 'CreditApproval'
+    s3Bucket: 'pblambdafunctions'
+    s3Prefix: 'CreditApproval'
+    additionalArgs: 'deploy-function CreditApproval --function-role azure-lambda-role'
