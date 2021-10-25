@@ -1,0 +1,49 @@
+# ASP.NET Core
+# Build and test ASP.NET Core projects targeting .NET Core.
+# Add steps that run tests, create a NuGet package, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+# testing
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- script: | 
+    dotnet restore CreditApproval.sln
+    ls
+  displayName: 'dotnet restore'
+
+
+- script: | 
+    dotnet build CreditApproval.sln
+    ls
+    cd /home/vsts/work/1/s/CreditApproval/bin/Debug/netcoreapp2.1/
+    ls -al
+    pwd
+  displayName: 'dotnet build'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '/home/vsts/work/1/s/CreditApproval/bin/Debug/netcoreapp2.1/'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    
+- task: LambdaNETCoreDeploy@1
+  inputs:
+    awsCredentials: 'awsconnection'
+    regionName: 'ap-south-1'
+    command: 'deployServerless'
+    packageOnly: false
+    lambdaProjectPath: './CreditApproval'
+    stackName: 'CreditApproval'
+    s3Bucket: 'pblambdafunctions'
+    s3Prefix: 'CreditApproval'
+    additionalArgs: 'deploy-function CreditApproval --function-role azure-lambda-role'
