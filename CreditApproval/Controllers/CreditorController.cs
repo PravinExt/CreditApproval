@@ -93,10 +93,6 @@ namespace CreditApproval.Controllers
                         var res = sqsClient.SendMessageAsync(qUrl, JsonMessage);
                     }
                 }
-                else
-                {
-
-                }
 
 
                 if (result == true)
