@@ -38,7 +38,7 @@ namespace CreditApproval.Model
             string Port = Environment.GetEnvironmentVariable("Port");
             string UID = Environment.GetEnvironmentVariable("UID");
             string PWD = Environment.GetEnvironmentVariable("PWD");
-            string Database = Environment.GetEnvironmentVariable("Database");
+            string Database = Environment.GetEnvironmentVariable("Database"); 
 
             //string sConnectionString = "server = applicationsubmission.cikv7fwlsku8.ap-south-1.rds.amazonaws.com; port = 3306; uid = admin; pwd = admin8910; database = CreditApproval";
             string sConnectionString = "server = " + Server + "; port = " + Port + "; uid = " + UID + "; pwd = " + PWD + "; database = " + Database;
