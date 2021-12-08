@@ -33,7 +33,7 @@ namespace CreditApproval.Model
 
         public string GetConnStr()
         {
-            //string sConnectionString = conStr;
+            //string sConnectionString = conStr; 
             string Server = Environment.GetEnvironmentVariable("Server");
             string Port = Environment.GetEnvironmentVariable("Port");
             string UID = Environment.GetEnvironmentVariable("UID");
