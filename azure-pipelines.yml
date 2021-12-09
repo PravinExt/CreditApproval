@@ -36,14 +36,21 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
     
-- task: LambdaNETCoreDeploy@1
+- task: LambdaDeployFunction@1
   inputs:
     awsCredentials: 'awsconnection'
     regionName: 'ap-south-1'
-    command: 'deployServerless'
-    packageOnly: false
-    lambdaProjectPath: './CreditApproval'
-    stackName: 'CreditApproval'
-    s3Bucket: 'pblambdafunctions'
-    s3Prefix: 'CreditApproval'
-    additionalArgs: 'deploy-function CreditApproval --function-role azure-lambda-role'
+    deploymentMode: 'codeandconfiguration'
+    functionName: 'CreditApproval'
+    functionHandler: CreditApproval::CreditApproval.LambdaEntryPoint::FunctionHandlerAsync'
+    runtime: 'dotnetcore2.1'
+    codeLocation: 'localfile'
+    localZipFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    roleARN: 'arn:aws:iam::618393550001:role/azure-lambda-role'
+    environment: |
+      Database=CreditApproval
+      Port=3306
+      PWD=admin8910
+      Server=applicationsubmission.cikv7fwlsku8.ap-south-1.rds.amazonaws.com
+      UID=admin
+
