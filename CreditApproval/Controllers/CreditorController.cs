@@ -84,10 +84,11 @@ namespace CreditApproval.Controllers
                     //Update Loan Status
                     result = loandetail.Update_LoanInfo(value, id);
 
-                    if (Loan_Status == 6) //Loan_Status 6 i.e. Sent To  Dcision Engine
+                    if (Loan_Status == 6) //Loan_Status 6 i.e. Sent To Decision Engine
                     {
-                        value.CreditorCallBackURL = _configuration.GetSection("CallBackURL").Value.ToString() + "/" + id.ToString();
-                        string qUrl = _configuration.GetSection("QueueURL").Value.ToString();
+                        string callback_url = Environment.GetEnvironmentVariable("CallBackURL");
+                        value.CreditorCallBackURL = callback_url + "/" + id.ToString();
+                        string qUrl = Environment.GetEnvironmentVariable("QueueURL");
                         var JsonMessage = JsonConvert.SerializeObject(value);
 
                         var res = sqsClient.SendMessageAsync(qUrl, JsonMessage);
