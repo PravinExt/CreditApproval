@@ -14,45 +14,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: | 
-    dotnet restore CreditApproval.sln
-    ls
-  displayName: 'dotnet restore'
-
-
-- script: | 
-    dotnet build CreditApproval.sln
-    ls
-    cd /home/vsts/work/1/s/CreditApproval/bin/Debug/netcoreapp2.1/
-    ls -al
-    pwd
-  displayName: 'dotnet build'
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '/home/vsts/work/1/s/CreditApproval/bin/Debug/netcoreapp2.1/'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-    
-- task: LambdaDeployFunction@1
+- task: LambdaNETCoreDeploy@1
   inputs:
     awsCredentials: 'awsconnection'
     regionName: 'ap-south-1'
-    deploymentMode: 'codeandconfiguration'
-    functionName: 'CreditApproval'
-    functionHandler: CreditApproval::CreditApproval.LambdaEntryPoint::FunctionHandlerAsync'
-    runtime: 'dotnetcore2.1'
-    codeLocation: 'localfile'
-    localZipFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    roleARN: 'arn:aws:iam::618393550001:role/azure-lambda-role'
-    environment: |
-      Database=CreditApproval
-      Port=3306
-      PWD=admin8910
-      Server=applicationsubmission.cikv7fwlsku8.ap-south-1.rds.amazonaws.com
-      UID=admin
-      QueueURL=https://sqs.ap-south-1.amazonaws.com/618393550001/DecisionQueueListener
-      CallBackURL=https://vdub1eldd6.execute-api.ap-south-1.amazonaws.com/v1/creditapproval/creditor
-
+    command: 'deployServerless'
+    packageOnly: false
+    lambdaProjectPath: './CreditApproval'
+    stackName: 'CreditApproval'
+    s3Bucket: 'pblambdafunctions'
