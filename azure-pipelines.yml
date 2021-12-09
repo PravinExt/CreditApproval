@@ -53,4 +53,6 @@ steps:
       PWD=admin8910
       Server=applicationsubmission.cikv7fwlsku8.ap-south-1.rds.amazonaws.com
       UID=admin
+      QueueURL=https://sqs.ap-south-1.amazonaws.com/618393550001/DecisionQueueListener
+      CallBackURL=https://vdub1eldd6.execute-api.ap-south-1.amazonaws.com/v1/creditapproval/creditor
 
