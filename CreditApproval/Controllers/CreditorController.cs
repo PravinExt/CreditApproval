@@ -86,7 +86,7 @@ namespace CreditApproval.Controllers
 
                     if (Loan_Status == 6) //Loan_Status 6 i.e. Sent To Decision Engine
                     {
-                        string callback_url = Environment.GetEnvironmentVariable("CallBackURL");
+                        string callback_url = Environment.GetEnvironmentVariable("CallBackURL"); 
                         value.CreditorCallBackURL = callback_url + "/" + id.ToString();
                         string qUrl = Environment.GetEnvironmentVariable("QueueURL");
                         var JsonMessage = JsonConvert.SerializeObject(value);
